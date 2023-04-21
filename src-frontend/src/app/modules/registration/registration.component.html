@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="modal-dialog m-5 fondo">
+            <div class="modal-content">
+                <h1 class="text-center mt-5" id="exampleModalLabel">REGISTRO</h1>
+                <h4 class="text-center mt-2" id="exampleModalLabel">Crea un nuevo usuario</h4>
+                <form class="px-3 py-4">
+                    <div class="form-outline mb-4">
+                        <div class="form-outline mb-4 flex-column">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>NOMBRE</mat-label>
+                                <input type="name" matInput [formControl]="nameFormControl" [errorStateMatcher]="matcher"
+                                    placeholder="Ej. Mamerto Galán Zabala" [(ngModel)]="model.nombre">
+                                <mat-error *ngIf="nameFormControl.hasError('name') && !nameFormControl.hasError('required')">
+                                    Por favor introduce un nombre válido (solo letras y espacios).
+                                </mat-error>
+                                  <mat-error *ngIf="nameFormControl.hasError('required')">
+                                    El nombre es <strong>requerido</strong>.
+                                </mat-error>
+                                  <mat-error *ngIf="nameFormControl.hasError('pattern')">
+                                    El nombre debe comenzar en mayúsculas y debe contener solo letras y espacios.
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>CORREO ELECTRÓNICO</mat-label>
+                                <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                                    placeholder="Ej. mamer@gmail.com" [(ngModel)]="model.email">
+                                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                    Porfavor introduce un correo electrónico válido
+                                </mat-error>
+                                <mat-error *ngIf="emailFormControl.hasError('required')">
+                                    El correo electrónico es <strong>requerido</strong>
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>CONTRASEÑA</mat-label>
+                                <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher" placeholder="Ingrese su contraseña"
+                                [(ngModel)]="model.password">
+                                <mat-error *ngIf="passwordFormControl.hasError('required')">La contraseña es <strong>obligatoria</strong></mat-error>
+                                <mat-error *ngIf="registrationForm.hasError('notSame') && !registrationForm.pristine">
+                                    Las contraseñas no coinciden.
+                                </mat-error> 
+                                <mat-error *ngIf="passwordFormControl.hasError('minlength')">La contraseña debe tener al menos 6 caracteres</mat-error>
+                                <mat-error *ngIf="passwordFormControl.hasError('maxlength')">La contraseña no debe tener más de 12 caracteres</mat-error>
+                                </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>CONFIRMAR CONTRASEÑA</mat-label>
+                                <input type="password" matInput [formControl]="confirmPasswordFormControl" [errorStateMatcher]="matcher" placeholder="Ingrese su contraseña de nuevo"
+                                [(ngModel)]="model.confirmPassword">
+                                <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">El confirmar contraseña es <strong>obligatorio</strong></mat-error>
+                                <mat-error *ngIf="registrationForm.hasError('notSame') && !registrationForm.pristine">
+                                    Las contraseñas no coinciden.
+                                </mat-error>
+                                <mat-error *ngIf="confirmPasswordFormControl.hasError('minlength')">La contraseña debe tener al menos 6 caracteres</mat-error>
+                                <mat-error *ngIf="confirmPasswordFormControl.hasError('maxlength')">La contraseña no debe tener más de 12 caracteres</mat-error>                       
+                            </mat-form-field>
+                        </div>
+                        <div id="bt">
+                            <button id="btRegister" onclick="window.open('/main')" class="col-3 mt-5" mat-raised-button
+                            [disabled]="(emailFormControl.hasError('email') || emailFormControl.hasError('required')) || (passwordFormControl.hasError('required')) 
+                            || nameFormControl.hasError('name') && !nameFormControl.hasError('required') ||
+                            nameFormControl.hasError('required') || nameFormControl.hasError('pattern') || 
+                            passwordFormControl.hasError('required') || passwordFormControl.hasError('minlength') ||
+                            passwordFormControl.hasError('maxlength') || registrationForm.hasError('notSame') && !registrationForm.pristine ||
+                            confirmPasswordFormControl.hasError('required') || confirmPasswordFormControl.hasError('minlength') ||
+                            confirmPasswordFormControl.hasError('maxlength') || registrationForm.hasError('notSame') && !registrationForm.pristine">REGISTRARSE
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
