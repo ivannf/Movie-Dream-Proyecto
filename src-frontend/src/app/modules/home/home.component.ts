@@ -33,5 +33,29 @@ export class HomeComponent {
       buttonText: 'CLASIFICACIÓN',
       img: '../../../assets/img/maraton_new_york.jpg',
     },
+    {
+      title: 'EVENTO 5',
+      description: 'Maratón de Nueva York 2022: Toda la información',
+      buttonText: 'CLASIFICACIÓN',
+      img: '../../../assets/img/maraton_new_york.jpg',
+    },
+    {
+      title: 'EVENTO 6',
+      description: 'Maratón de Nueva York 2022: Toda la información',
+      buttonText: 'CLASIFICACIÓN',
+      img: '../../../assets/img/maraton_new_york.jpg',
+    },
+    {
+      title: 'EVENTO 7',
+      description: 'Maratón de Nueva York 2022: Toda la información',
+      buttonText: 'CLASIFICACIÓN',
+      img: '../../../assets/img/maraton_new_york.jpg',
+    },
+    {
+      title: 'EVENTO 8',
+      description: 'Maratón de Nueva York 2022: Toda la información',
+      buttonText: 'CLASIFICACIÓN',
+      img: '../../../assets/img/maraton_new_york.jpg',
+    },
   ];
 }
