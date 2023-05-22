@@ -8,8 +8,8 @@ const jwt = require('jsonwebtoken');
 router.get('/', (req, res) => res.send('Hello world'));
 
 router.post('/register', async (req, res) => {
-    const { nombre, apellidos, email, contra } = req.body;
-    const newUser = new User({nombre,apellidos,email,contra});
+    const { name, surname, email, password } = req.body;
+    const newUser = new User({name,surname,email,password});
     await newUser.save();
 
     const token = jwt.sign({_id: newUser._id}, 'claveSecreta');
@@ -18,10 +18,10 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     
-    const { email, contra } = req.body;
+    const { email, password } = req.body;
     const user = await User.findOne({email: email})
     if(!user) return res.status(401).send("El correo no esta registrado");
-    if(user.contra !== contra) return res.status(401).send("La contraseña es incorrecta");
+    if(user.password !== password) return res.status(401).send("La contraseña es incorrecta");
 
     const token = jwt.sign({_id: user._id}, 'claveSecreta');
     return res.status(200).json({token});

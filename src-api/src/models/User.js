@@ -1,11 +1,11 @@
 const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
-    nombre: {
+    name: {
         type: String,
         required: true
     },
-    apellidos: {
+    surname: {
         type: String,
         required: true
     },
@@ -16,7 +16,7 @@ const userSchema = new Schema({
             unique:true
         }
     },
-    contra: {
+    password: {
         type: String,
         required: true
     }

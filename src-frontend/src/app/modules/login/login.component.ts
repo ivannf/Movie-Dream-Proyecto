@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { Usuario } from './usuario.model';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -18,7 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 
 
-export class LoginComponent {
+export class LoginComponent{
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl = new FormControl('', [Validators.required, Validators.minLength(1)]);
 
@@ -32,6 +34,21 @@ export class LoginComponent {
 
   // Una vez que el formulario se envía entonces se establece a enviado.
   onSubmit() { this.submitted = true; }
+
+  user = {
+    email: '',
+    password: ''
+  }
+
+  constructor(
+    private authService: AuthService){ }
+
+  login(){
+    this.authService.login(this.user).subscribe(res => {
+      console.log(res);
+    }, err => console.log(err)
+    )
+  }
 
   // Método para inicializar una nueva persona:
   newPerson () {

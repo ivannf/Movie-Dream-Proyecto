@@ -2,7 +2,7 @@
   <div class="modal-dialog m-5" id="fondoInicioSesion">
     <div class="modal-content">
       <h1 class="text-lg-center mt-5" id="exampleModalLabel"><strong>INICIAR SESIÓN</strong></h1>
-      <form class="px-5 py-5" (ngSubmit)="onSubmit()" #loginForm="ngForm" >
+      <form class="px-5 py-5" (submit)="login()">
         <div class="form-outline mb-3">
           <div class="input-group">
             <label for="email">Correo electrónico</label>
@@ -11,7 +11,7 @@
               <input type="email" class="text-lg-center" matInput [formControl]="emailFormControl"
                 [errorStateMatcher]="matcher" placeholder="CORREO ELECTRÓNICO" 
                 required
-                [(ngModel)]="model.email">
+                [(ngModel)]="user.email">
               <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                 Por favor introduce un email correcto
               </mat-error>
@@ -30,7 +30,7 @@
               <input type="password" class="text-lg-center" matInput [formControl]="passwordFormControl"
                 [errorStateMatcher]="matcher" placeholder="CONTRASEÑA"
                 required
-                [(ngModel)]="model.contra">
+                [(ngModel)]="user.password">
               <mat-error *ngIf="passwordFormControl.hasError('required')">
                 La contraseña es <strong>requerida</strong>
               </mat-error>
@@ -40,7 +40,7 @@
 
         <div class="row">
           <div class="col d-flex justify-content-center">
-            <button type="submit" id="botonEntrar" class="btn" onclick="location.href='/main'" [disabled]="(emailFormControl.hasError('email') || emailFormControl.hasError('required')) || (passwordFormControl.hasError('required'))" mat-raised-button>ENTRAR</button>
+            <button id="botonEntrar" mat-raised-button [disabled]="(emailFormControl.hasError('email') || emailFormControl.hasError('required')) || (passwordFormControl.hasError('required'))" mat-raised-button>ENTRAR</button>
           </div>
         </div>  
 

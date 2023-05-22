@@ -5,12 +5,14 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
 import { LoginComponent } from './login/login.component';
+import { PrivateTasksComponent } from './private-tasks/private-tasks.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    PrivateTasksComponent
   ],
   imports: [
     CommonModule,

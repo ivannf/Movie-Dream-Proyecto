@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup, AbstractControl} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { Usuario } from './usuarioRegistrado.model';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -19,40 +21,25 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class RegistrationComponent {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  nameFormControl = new FormControl('', [Validators.required, Validators.pattern('^[A-ZÑÁÉÍÓÚ][a-zA-ZñÑáéíóúÁÉÍÓÚ ]*$')
-
-]);
+  nameFormControl = new FormControl('', [Validators.required, Validators.pattern('^[A-ZÑÁÉÍÓÚ][a-zA-ZñÑáéíóúÁÉÍÓÚ ]*$')]);
+  surnameFormControl = new FormControl('', [Validators.required, Validators.pattern('^[A-ZÑÁÉÍÓÚ][a-zA-ZñÑáéíóúÁÉÍÓÚ ]*$')]);
   passwordFormControl = new FormControl('', [
-    Validators.required,
-    Validators.minLength(6),
-    Validators.maxLength(12)
-  ]);
-  confirmPasswordFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(6),
     Validators.maxLength(12)
   ]);
 
   matcher = new MyErrorStateMatcher();
-
-  matchPassword(control: AbstractControl) {
-    const password = control.get('password')?.value;
-    const confirmPassword = control.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { notSame: true };
-  }
   
   registrationForm = new FormGroup(
     {
-      email: this.emailFormControl,
       name: this.nameFormControl,
-      password: this.passwordFormControl,
-      confirmPassword: this.confirmPasswordFormControl
+      surname: this.surnameFormControl,
+      email: this.emailFormControl,
+      password: this.passwordFormControl
     },
-    [Validators.required, this.matchPassword, Validators.minLength(6), Validators.maxLength(12)]
+    [Validators.required, Validators.minLength(6), Validators.maxLength(12)]
   );
-
-    // Datos de ejemplo para el usuario
-    model = new Usuario("Mamerto Galán Zabala","mamer@gmail.com","1234567","1234567");
 
     // Control de Formulario enviado por defecto a falso
     submitted = false;
@@ -60,10 +47,28 @@ export class RegistrationComponent {
     // Una vez que el formulario se envía entonces se establece a enviado.
     onSubmit() { this.submitted = true; }
   
-    // Método para inicializar un nuevo usuario:
-    newUsuario () {
-      this.model = new Usuario("Mamerto Galán Zabala","mamer@gmail.com","1234567","1234567");
+    user = {
+      name: '',
+      surname: '',
+      email: '',
+      password: ''
     };
+
+    constructor(
+      private authService: AuthService, 
+      private router: Router
+    ) {  }
+
+    ngOnInit(){}
+
+    register() {
+      this.authService.register(this.user).subscribe(res => {
+        console.log(res)
+        localStorage.setItem('token', res.token);
+        this.router.navigate(['/private-tasks']);
+      }, err => console.log(err)
+      )
+    }
 }
 
 

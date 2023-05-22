@@ -1,5 +1,18 @@
-.fondo {
+#fondoRegister {
   background-color: #080F53;
+  border-radius: 10px;
+}
+
+h1{
+  color: white;
+}
+
+h4{
+  color: white;
+}
+
+label{
+  color: white;
 }
 
 .example-form {
@@ -12,14 +25,10 @@
     width: 100%;
 }
 
-#btRegister {
-  background-color: #282828;
+#btRegister{
+  text-align: center;
+  background-color: #6A9DFF;
   color: #FFFFFF;
-  text-align: center;
-}
-
-#bt {
-  text-align: center;
 }
 
 
