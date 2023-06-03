@@ -6,6 +6,8 @@ import { RegistrationComponent } from './modules/registration/registration.compo
 import { LoginComponent } from './modules/login/login.component';
 import { TasksComponent } from './modules/tasks/tasks.component';
 import { PrivateTasksComponent } from './modules/private-tasks/private-tasks.component';
+import { DetallesPeliculaComponent } from './modules/detalles-pelicula/detalles-pelicula.component';
+import { ReservaPeliculaComponent } from './modules/reserva-pelicula/reserva-pelicula.component';
 
 const routes: Routes = [
   {
@@ -18,7 +20,9 @@ const routes: Routes = [
       { path: 'register', component: RegistrationComponent },
       { path: 'home', component: HomeComponent  },
       { path: 'tasks', component: TasksComponent },
-      { path: 'private-tasks', component: PrivateTasksComponent}
+      { path: 'private-tasks', component: PrivateTasksComponent},
+      { path: 'pelicula/:id', component: DetallesPeliculaComponent},
+      { path: 'reservaPelicula', component: ReservaPeliculaComponent}
     ] 
   }
 ];

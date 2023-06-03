@@ -1,61 +1,30 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../../services/movie.service';
+import { Movie } from './movie.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  cards = [
-    {
-      title: 'EVENTO 1',
-      description:
-        'Maratón olímpico de París 2024: Toda la información',
-      buttonText: 'CLASIFICACIÓN',
-      img: '../../../assets/img/arco_triunfo.jpg',
-    },
-    {
-      title: 'EVENTO 2',
-      description: 'Maratón de Málaga 2022: Toda la información',
-      buttonText: 'CLASIFICACIÓN',
-      img: '../../../assets/img/maraton_malaga.jpg',
-    },
-    {
-      title: 'EVENTO 3',
-      description:
-        'Mediterránea Triatlón de Valencia 2022: Toda la información',
-      buttonText: 'CLASIFICACIÓN',
-      img: '../../../assets/img/triatlon_valencia.jpg',
-    },
-    {
-      title: 'EVENTO 4',
-      description: 'Maratón de Nueva York 2022: Toda la información',
-      buttonText: 'CLASIFICACIÓN',
-      img: '../../../assets/img/maraton_new_york.jpg',
-    },
-    {
-      title: 'EVENTO 5',
-      description: 'Maratón de Nueva York 2022: Toda la información',
-      buttonText: 'CLASIFICACIÓN',
-      img: '../../../assets/img/maraton_new_york.jpg',
-    },
-    {
-      title: 'EVENTO 6',
-      description: 'Maratón de Nueva York 2022: Toda la información',
-      buttonText: 'CLASIFICACIÓN',
-      img: '../../../assets/img/maraton_new_york.jpg',
-    },
-    {
-      title: 'EVENTO 7',
-      description: 'Maratón de Nueva York 2022: Toda la información',
-      buttonText: 'CLASIFICACIÓN',
-      img: '../../../assets/img/maraton_new_york.jpg',
-    },
-    {
-      title: 'EVENTO 8',
-      description: 'Maratón de Nueva York 2022: Toda la información',
-      buttonText: 'CLASIFICACIÓN',
-      img: '../../../assets/img/maraton_new_york.jpg',
-    },
-  ];
+
+  movies: Movie[] = [];
+
+  constructor(private movieService: MovieService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.getMovies();
+  }
+
+  getMovies(): void{
+    this.movieService.getMovie().subscribe(
+      data => {
+        this.movies = data;
+      },
+      error => {
+        console.log('Error al obtener las peliculas', error);
+      }
+    );
+  }
 }

@@ -40,7 +40,7 @@
 
         <div class="row">
           <div class="col d-flex justify-content-center">
-            <button id="botonEntrar" mat-raised-button [disabled]="(emailFormControl.hasError('email') || emailFormControl.hasError('required')) || (passwordFormControl.hasError('required'))" mat-raised-button>ENTRAR</button>
+            <button id="botonEntrar" RouterLink="/home" mat-raised-button [disabled]="(emailFormControl.hasError('email') || emailFormControl.hasError('required')) || (passwordFormControl.hasError('required'))" mat-raised-button>ENTRAR</button>
           </div>
         </div>  
 

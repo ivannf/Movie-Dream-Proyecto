@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +18,7 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
     AppComponent,
     SkeletonComponent,
     FooterComponent,
-    NavigationComponent 
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,8 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
     ModulesModule,
     SharedModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

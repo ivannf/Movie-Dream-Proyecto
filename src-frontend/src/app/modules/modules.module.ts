@@ -6,13 +6,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
 import { LoginComponent } from './login/login.component';
 import { PrivateTasksComponent } from './private-tasks/private-tasks.component';
+import { DetallesPeliculaComponent } from './detalles-pelicula/detalles-pelicula.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     RegistrationComponent,
     LoginComponent,
-    PrivateTasksComponent
+    PrivateTasksComponent,
+    DetallesPeliculaComponent
   ],
   imports: [
     CommonModule,

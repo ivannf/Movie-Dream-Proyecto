@@ -1,0 +1,47 @@
+<div>
+    <div *ngIf="pelicula" class="pelicula">
+        <div class="col-5">
+            <img [src]="'../../../assets/img/' + pelicula?.imagen" alt="{{ pelicula.nombre }}" />
+        </div>
+        <div class="col-7">
+            <h2>{{ pelicula?.nombre }}</h2>
+            <div class="row">
+                <div class="col-8">
+                    <div class="row">
+                        <h4>Sinopsis</h4>
+                        <p>{{ pelicula?.sinopsis }}</p>
+                    </div>
+                    <div class="row">
+                        <h4>Reparto</h4>
+                        <p>{{ pelicula?.reparto }}</p>
+                    </div>
+                    <div class="row">
+                        <h4>Directores</h4>
+                        <p>{{ pelicula?.directores }}</p>
+                    </div>
+                    <div class="row">
+                        <h4>Calificación</h4>
+                        <p>{{ pelicula?.calificacion }}</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <h4>Duración</h4>
+                        <p>{{ pelicula?.duracion }}</p>
+                    </div>
+                    <div class="row">
+                        <h4>Fecha de estreno</h4>
+                        <p>{{ pelicula?.fechaEstreno }}</p>
+                    </div>
+                    <div class="row">
+                        <h4>Género</h4>
+                        <p>{{ pelicula?.genero }}</p>
+                    </div>
+                </div>
+                <div class="centrar">
+                    <button id="botonReservar">RESERVAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
