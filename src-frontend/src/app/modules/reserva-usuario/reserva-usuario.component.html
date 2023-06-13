@@ -1,0 +1,24 @@
+<div class="container">
+    <h2>Listado de Reservas</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Película</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Asiento</th>
+                <th>Sala</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reserva of reservas">
+                <td>{{ reserva.idPelicula }}</td>
+                <td>{{ reserva.fecha.slice(0, 10) }}</td>
+                <td>{{ reserva.hora }}</td>
+                <td>{{ reserva.asiento }}</td>
+                <td>{{ reserva.sala }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -3,7 +3,8 @@ import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/form
 import {ErrorStateMatcher} from '@angular/material/core';
 import { Usuario } from './usuario.model';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Data, Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -26,33 +27,26 @@ export class LoginComponent{
 
   matcher = new MyErrorStateMatcher();
 
-  // Datos de ejemplo para la persona
-  model = new Usuario("example@example.com",12313);
-
-  // Control de Formulario enviado por defecto a falso
-  submitted = false;
-
-  // Una vez que el formulario se envía entonces se establece a enviado.
-  onSubmit() { this.submitted = true; }
-
   user = {
     email: '',
-    password: ''
+    password: '',
   }
 
   constructor(
-    private authService: AuthService){ }
+    private authService: AuthService, private router: Router, private dataService: DataService){ }
 
   login(){
     this.authService.login(this.user).subscribe(res => {
-      console.log(res);
+      localStorage.setItem('token', res.token);
+      const decodedToken = this.authService.getUser();
+
+        if (decodedToken && decodedToken.role === 'admin') {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/home']);
+        }
+      this.dataService.setCorreo(this.user.email);
     }, err => console.log(err)
     )
   }
-
-  // Método para inicializar una nueva persona:
-  newPerson () {
-    this.model = new Usuario('',2131);
-  };
-
 }

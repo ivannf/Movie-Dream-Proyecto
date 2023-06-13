@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Movie } from '../modules/home/movie.model';
 import { Pelicula } from '../modules/detalles-pelicula/pelicula.model';
 import { Location } from '@angular/common';
+import { Reserva } from '../modules/reserva-pelicula/reserva.model';
+import { Usuario } from '../modules/perfil/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +30,13 @@ export class MovieService {
 
   getPelicula(): Observable<Pelicula> {
     return this.http.get<Pelicula>(`${this.apiUrl}/pelicula/${this.fragmento}`);
+  }
+
+  getReserva(): Observable<Reserva[]>{
+    return this.http.get<Reserva[]>(`${this.apiUrl}/reservaPelicula/${this.fragmento}`);
+  }
+
+  getUsuario(): Observable<Usuario>{
+    return this.http.get<Usuario>(`${this.apiUrl}/perfil`);
   }
 }

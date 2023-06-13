@@ -65,7 +65,7 @@ export class RegistrationComponent {
       this.authService.register(this.user).subscribe(res => {
         console.log(res)
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/private-tasks']);
+        this.router.navigate(['/login']);
       }, err => console.log(err)
       )
     }

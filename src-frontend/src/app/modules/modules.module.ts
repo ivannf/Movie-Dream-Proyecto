@@ -5,16 +5,18 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
 import { LoginComponent } from './login/login.component';
-import { PrivateTasksComponent } from './private-tasks/private-tasks.component';
 import { DetallesPeliculaComponent } from './detalles-pelicula/detalles-pelicula.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     RegistrationComponent,
     LoginComponent,
-    PrivateTasksComponent,
-    DetallesPeliculaComponent
+    DetallesPeliculaComponent,
+    PerfilComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,

@@ -5,9 +5,10 @@
 export class Usuario {
 
     constructor(
+        public username: string,
+        public surname: string,
         public email: string,
-        public contra: Number,
-        public role: string
+        public contra: string
     )   {  }
 
 }

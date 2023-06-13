@@ -3,7 +3,7 @@
         <div class="col-5">
             <img [src]="'../../../assets/img/' + pelicula?.imagen" alt="{{ pelicula.nombre }}" />
         </div>
-        <div class="col-7">
+        <div class="col-6">
             <h2>{{ pelicula?.nombre }}</h2>
             <div class="row">
                 <div class="col-8">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="centrar">
-                    <button id="botonReservar">RESERVAR</button>
+                    <button id="botonReservar" (click)="reservar()">RESERVAR</button>
                 </div>
             </div>
         </div>
