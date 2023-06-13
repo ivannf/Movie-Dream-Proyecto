@@ -15,7 +15,7 @@ MovieDream es una aplicación web que he desarrollado con la pasión por el cine
 # Objetivo de la aplicación
 
 Los objetivos de esta aplicación son:
-Es ofrecer una experiencia cinematográfica completa y enriquecedora a los usuarios, brindándoles una plataforma donde mostrar las películas actualmente en exhibición, incluyendo información detallada sobre cada película, como sinopsis, clasificación, duración y reparto, permitir a los usuarios comprar entradas en línea para las películas que deseen ver, mostrar los horarios de las películas disponibles y permitir a los usuarios seleccionar la fecha y hora de su preferencia, permitir a los usuarios ver su historial de reservas.
+ofrecer una experiencia cinematográfica completa y enriquecedora a los usuarios, brindándoles una plataforma donde mostrar las películas actualmente en exhibición, incluyendo información detallada sobre cada película, como sinopsis, clasificación, duración y reparto, permitir a los usuarios comprar entradas en línea para las películas que deseen ver, mostrar los horarios de las películas disponibles y permitir a los usuarios seleccionar la fecha y hora de su preferencia, permitir a los usuarios ver su historial de reservas.
 
 # Estructura del proyecto
 
