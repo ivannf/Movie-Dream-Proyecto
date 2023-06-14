@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  express:
+    build:
+      context: ./src/src-api
+      dockerfile: Dockerfile
+    ports: 
+      - "3000:3000"
+
+  angular:
+    hostname: localhost
+    build:
+      context: ./src/src-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    depends_on:
+      - express
